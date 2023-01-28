@@ -9,7 +9,7 @@ function increment(){
 
 function deincrement(){
     count = count - 1;
-    count < 0 ? count = 0 :
+    count < 0 ? count = 0 :  // Condition so de-incrementation cannot be negative
     countEl.textContent = count;
 }
 
