@@ -1,6 +1,7 @@
 let count = 0;
 let countEl = document.getElementById("count-el");
 let saveEl = document.getElementById("save-el");
+let tallyList = [0,0,0]; // Default starting list
 
 function increment(){
     count = count + 1;
@@ -14,9 +15,13 @@ function deincrement(){
 }
 
 function save(){
-    let previousEntry = count + " - ";
-    saveEl.textContent = saveEl.textContent + previousEntry ; 
-    count = 0; // Resets counter once saved value
+
+    tallyList.pop();  // Remove first element from list (oldest)
+    tallyList.unshift(count);
+    let entry = `Previous Entries: ${tallyList[0]} - ${tallyList[1]} - ${tallyList[2]}`
+    saveEl.textContent = entry; // Renders values to webpage
+
+    count = 0; // Resets counter once value is saved
     countEl.textContent = count;
 }
 
